@@ -9,7 +9,6 @@ import Foundation
 
 class LoginViewModel {
     func login(username: String, password: String, completion: @escaping (Bool) -> Void) {
-        // Verificar las credenciales aquí
         let correctUsername = "admin"
         let correctPassword = "admin"
 //        let correctUsername = "Admin"

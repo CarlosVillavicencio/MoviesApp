@@ -8,14 +8,11 @@
 import UIKit
 
 class MoviesView: UIViewController {
-    private let viewModel: MoviesViewModel
     
-    private let tableView: UITableView = {
-        let tableView = UITableView()
-        tableView.translatesAutoresizingMaskIntoConstraints = false
-        // Configura el diseño de la tabla, como las celdas, la altura, etc.
-        return tableView
-    }()
+    let cellIdentifier = "CustomMovieCell"
+    
+    private let viewModel: MoviesViewModel
+    @IBOutlet weak var tbMovies: UITableView!
     
     init(viewModel: MoviesViewModel) {
         self.viewModel = viewModel
@@ -28,30 +25,27 @@ class MoviesView: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-//        setupUI()
+        setupUI()
         loadMovies()
-        print("moviewview iniciado")
     }
     
     private func setupUI() {
-        view.addSubview(tableView)
-        NSLayoutConstraint.activate([
-            tableView.topAnchor.constraint(equalTo: view.topAnchor),
-            tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
-        ])
+        let attributes: [NSAttributedString.Key: Any] = [
+            .font: UIFont.boldSystemFont(ofSize: 17)
+        ]
+        let title = NSAttributedString(string: "Movies", attributes: attributes)
+        self.navigationItem.title = title.string
         
-        tableView.delegate = self
-        tableView.dataSource = self
-        tableView.register(MovieTableViewCell.self, forCellReuseIdentifier: "MovieCell")
+        tbMovies.dataSource = self
+        tbMovies.delegate = self
+        
+        let nib = UINib(nibName: "MovieTableViewCell", bundle: Bundle(for: MovieTableViewCell.self))
+        tbMovies.register(nib, forCellReuseIdentifier: cellIdentifier)
     }
     
     private func loadMovies() {
         viewModel.searchMovies(query: "Action") { [weak self] error in
             if let error = error {
-                // Mostrar un mensaje de error o realizar alguna acción de manejo de errores
                 print("Error searching movies: \(error)")
             } else {
                 print("data recibida")
@@ -65,11 +59,15 @@ class MoviesView: UIViewController {
                     print("=========================")
                     print("=========================")
                     print("movies")
+                    print("viewModel.movies.count")
+                    print(self?.viewModel.movies.count)
                     print(movies)
                 } else {
                     print("movies no encontrada")
                 }
-//                self?.tableView.reloadData()
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.125) {
+                    self?.tbMovies.reloadData()
+                }
             }
         }
     }
@@ -77,21 +75,32 @@ class MoviesView: UIViewController {
 
 extension MoviesView: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.movies.count
+        let totalItems = viewModel.movies.count
+        return totalItems / 2
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "MovieCell", for: indexPath) as! MovieTableViewCell
-        
-        let movie = viewModel.movies[indexPath.row]
-        cell.configure(with: movie)
-        
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! MovieTableViewCell
+        let itemIndex = indexPath.row * 2
+        let firstMovie = viewModel.movies[itemIndex]
+        if itemIndex + 1 < viewModel.movies.count {
+            let secondMovie = viewModel.movies[itemIndex + 1]
+            cell.configure(movieOne: firstMovie, movieTwo: secondMovie)
+        } else {
+            cell.configure(movieOne: firstMovie)
+        }
         return cell
     }
-}
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 300
+    }
 
-class MovieTableViewCell: UITableViewCell {
-    func configure(with movie: Movie) {
-        // Configura la celda con los datos de la película, como el título, el año, etc.
+    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        let offsetY = scrollView.contentOffset.y
+        let contentHeight = scrollView.contentSize.height
+        let scrollViewHeight = scrollView.frame.size.height
+        if offsetY > 0 && offsetY + scrollViewHeight >= contentHeight {
+            print("Se llegó al final del desplazamiento hacia abajo")
+        }
     }
 }

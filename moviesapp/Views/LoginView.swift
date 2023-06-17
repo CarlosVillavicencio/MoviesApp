@@ -26,13 +26,11 @@ class LoginView: UIViewController {
         tfUser.borderStyle = .roundedRect
         tfUser.translatesAutoresizingMaskIntoConstraints = false
         
-        
         tfPassword.placeholder = "Contraseña"
         tfPassword.borderStyle = .roundedRect
         tfPassword.isSecureTextEntry = true
         tfPassword.translatesAutoresizingMaskIntoConstraints = false
         
-//        btnLogin.buttonType = .system
         btnLogin.setTitle("Iniciar sesión", for: .normal)
         btnLogin.titleLabel?.font = UIFont.boldSystemFont(ofSize: 16)
         btnLogin.translatesAutoresizingMaskIntoConstraints = false
@@ -52,10 +50,7 @@ class LoginView: UIViewController {
         viewModel.login(username: username, password: password) { [weak self] isLoggedIn in
             if isLoggedIn {
                 self?.changeRootViewControllerWithAnimation()
-                print("correcto")
             } else {
-                // Mostrar una alerta u otra retroalimentación para credenciales incorrectas
-                print("incorrecto")
                 self?.showErrorLabel()
             }
         }
@@ -66,15 +61,7 @@ class LoginView: UIViewController {
     }
     private func changeRootViewControllerWithAnimation() {
         let moviesViewModel = MoviesViewModel(repository: RemoteMoviesRepository(), coreDataManager: CoreDataManager())
-//        let moviesViewController = MoviesViewController(viewModel: moviesViewModel)
-//        navigationController?.pushViewController(moviesViewController, animated: true)
-
-        
         let newRootViewController = MoviesView(viewModel: moviesViewModel)
-        // Crear y configurar tu nueva vista raíz
-//        let newRootViewController = MoviesView()
-//        newRootViewController.view.backgroundColor = .white
-        // Establecer la nueva vista raíz con animación
         setRootViewControllerWithAnimation(newRootViewController)
     }
     
@@ -83,11 +70,9 @@ class LoginView: UIViewController {
               let window = windowScene.windows.first else {
             return
         }
-        // Establecer la nueva vista raíz sin animación
         let moviesViewController = BaseNavigationController(rootViewController: newRootViewController)
         window.rootViewController = moviesViewController
         
-        // Configurar la animación
         let animationDuration = 0.5
         let animationOptions: UIView.AnimationOptions = .transitionCrossDissolve
         

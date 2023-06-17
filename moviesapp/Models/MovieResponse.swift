@@ -8,12 +8,18 @@
 import Foundation
 
 struct MovieResponse: Codable {
-    let title: String
+    let adult: Bool
+    let backdropPath: String?
+    let genreIds: [Int]
+    let id: Int
+    let originalLanguage: String
+    let originalTitle: String
+    let overview: String
+    let popularity: Double
+    let posterPath: String?
     let releaseDate: String
-    let posterPath: String
-    
-    var posterURL: URL {
-        let baseURL = "https://example.com/posters/"
-        return URL(string: baseURL + posterPath)!
-    }
+    let title: String
+    let video: Bool
+    let voteAverage: Double
+    let voteCount: Int
 }
