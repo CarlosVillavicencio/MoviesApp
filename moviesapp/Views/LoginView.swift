@@ -65,8 +65,14 @@ class LoginView: UIViewController {
         lblError.isHidden = false
     }
     private func changeRootViewControllerWithAnimation() {
+        let moviesViewModel = MoviesViewModel(repository: RemoteMoviesRepository(), coreDataManager: CoreDataManager())
+//        let moviesViewController = MoviesViewController(viewModel: moviesViewModel)
+//        navigationController?.pushViewController(moviesViewController, animated: true)
+
+        
+        let newRootViewController = MoviesView(viewModel: moviesViewModel)
         // Crear y configurar tu nueva vista raíz
-        let newRootViewController = MoviesView()
+//        let newRootViewController = MoviesView()
 //        newRootViewController.view.backgroundColor = .white
         // Establecer la nueva vista raíz con animación
         setRootViewControllerWithAnimation(newRootViewController)

@@ -22,6 +22,15 @@
 		421F04002A3CCE9C007EDEA4 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 421F03FF2A3CCE9C007EDEA4 /* LoginViewModel.swift */; };
 		421F04032A3CCF0D007EDEA4 /* MoviesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 421F04012A3CCF0D007EDEA4 /* MoviesView.swift */; };
 		421F04042A3CCF0D007EDEA4 /* MoviesView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 421F04022A3CCF0D007EDEA4 /* MoviesView.xib */; };
+		421F04062A3D1537007EDEA4 /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 421F04052A3D1537007EDEA4 /* Movie.swift */; };
+		421F04082A3D293F007EDEA4 /* MoviesRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 421F04072A3D293F007EDEA4 /* MoviesRepository.swift */; };
+		421F040A2A3D29A9007EDEA4 /* RemoteMoviesRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 421F04092A3D29A9007EDEA4 /* RemoteMoviesRepository.swift */; };
+		421F040D2A3D2AEC007EDEA4 /* MovieEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 421F040C2A3D2AEC007EDEA4 /* MovieEntity.swift */; };
+		421F040F2A3D2B0F007EDEA4 /* MoviesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 421F040E2A3D2B0F007EDEA4 /* MoviesViewModel.swift */; };
+		421F04112A3D2BD8007EDEA4 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 421F04102A3D2BD8007EDEA4 /* CoreDataManager.swift */; };
+		421F04132A3D2C41007EDEA4 /* APIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 421F04122A3D2C41007EDEA4 /* APIError.swift */; };
+		421F04152A3D2C7F007EDEA4 /* MoviesResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 421F04142A3D2C7F007EDEA4 /* MoviesResponse.swift */; };
+		421F04172A3D2C9F007EDEA4 /* MovieResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 421F04162A3D2C9F007EDEA4 /* MovieResponse.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +70,15 @@
 		421F03FF2A3CCE9C007EDEA4 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		421F04012A3CCF0D007EDEA4 /* MoviesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesView.swift; sourceTree = "<group>"; };
 		421F04022A3CCF0D007EDEA4 /* MoviesView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MoviesView.xib; sourceTree = "<group>"; };
+		421F04052A3D1537007EDEA4 /* Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
+		421F04072A3D293F007EDEA4 /* MoviesRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesRepository.swift; sourceTree = "<group>"; };
+		421F04092A3D29A9007EDEA4 /* RemoteMoviesRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteMoviesRepository.swift; sourceTree = "<group>"; };
+		421F040C2A3D2AEC007EDEA4 /* MovieEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieEntity.swift; sourceTree = "<group>"; };
+		421F040E2A3D2B0F007EDEA4 /* MoviesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesViewModel.swift; sourceTree = "<group>"; };
+		421F04102A3D2BD8007EDEA4 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
+		421F04122A3D2C41007EDEA4 /* APIError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIError.swift; sourceTree = "<group>"; };
+		421F04142A3D2C7F007EDEA4 /* MoviesResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesResponse.swift; sourceTree = "<group>"; };
+		421F04162A3D2C9F007EDEA4 /* MovieResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieResponse.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,6 +129,7 @@
 		421F03B82A3CC606007EDEA4 /* moviesapp */ = {
 			isa = PBXGroup;
 			children = (
+				421F040B2A3D2AD0007EDEA4 /* Entities */,
 				421F03F42A3CC949007EDEA4 /* Models */,
 				421F03F52A3CC94F007EDEA4 /* Networking */,
 				421F03F62A3CC95B007EDEA4 /* Repositories */,
@@ -150,6 +169,9 @@
 		421F03F42A3CC949007EDEA4 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				421F04052A3D1537007EDEA4 /* Movie.swift */,
+				421F04142A3D2C7F007EDEA4 /* MoviesResponse.swift */,
+				421F04162A3D2C9F007EDEA4 /* MovieResponse.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -164,6 +186,7 @@
 		421F03F62A3CC95B007EDEA4 /* Repositories */ = {
 			isa = PBXGroup;
 			children = (
+				421F04092A3D29A9007EDEA4 /* RemoteMoviesRepository.swift */,
 			);
 			path = Repositories;
 			sourceTree = "<group>";
@@ -171,6 +194,7 @@
 		421F03F72A3CC98F007EDEA4 /* UseCases */ = {
 			isa = PBXGroup;
 			children = (
+				421F04072A3D293F007EDEA4 /* MoviesRepository.swift */,
 			);
 			path = UseCases;
 			sourceTree = "<group>";
@@ -179,6 +203,7 @@
 			isa = PBXGroup;
 			children = (
 				421F03FF2A3CCE9C007EDEA4 /* LoginViewModel.swift */,
+				421F040E2A3D2B0F007EDEA4 /* MoviesViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -197,8 +222,18 @@
 		421F03FA2A3CC9AC007EDEA4 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				421F04122A3D2C41007EDEA4 /* APIError.swift */,
 			);
 			path = Helpers;
+			sourceTree = "<group>";
+		};
+		421F040B2A3D2AD0007EDEA4 /* Entities */ = {
+			isa = PBXGroup;
+			children = (
+				421F040C2A3D2AEC007EDEA4 /* MovieEntity.swift */,
+				421F04102A3D2BD8007EDEA4 /* CoreDataManager.swift */,
+			);
+			path = Entities;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -334,12 +369,21 @@
 			buildActionMask = 2147483647;
 			files = (
 				421F03BE2A3CC606007EDEA4 /* ViewController.swift in Sources */,
+				421F04152A3D2C7F007EDEA4 /* MoviesResponse.swift in Sources */,
 				421F04032A3CCF0D007EDEA4 /* MoviesView.swift in Sources */,
+				421F04062A3D1537007EDEA4 /* Movie.swift in Sources */,
 				421F03FD2A3CCB44007EDEA4 /* LoginView.swift in Sources */,
 				421F03BA2A3CC606007EDEA4 /* AppDelegate.swift in Sources */,
 				421F03C42A3CC606007EDEA4 /* moviesapp.xcdatamodeld in Sources */,
+				421F04082A3D293F007EDEA4 /* MoviesRepository.swift in Sources */,
+				421F040F2A3D2B0F007EDEA4 /* MoviesViewModel.swift in Sources */,
+				421F04132A3D2C41007EDEA4 /* APIError.swift in Sources */,
 				421F03ED2A3CC819007EDEA4 /* BaseNavigationController.swift in Sources */,
 				421F03BC2A3CC606007EDEA4 /* SceneDelegate.swift in Sources */,
+				421F040D2A3D2AEC007EDEA4 /* MovieEntity.swift in Sources */,
+				421F04172A3D2C9F007EDEA4 /* MovieResponse.swift in Sources */,
+				421F040A2A3D29A9007EDEA4 /* RemoteMoviesRepository.swift in Sources */,
+				421F04112A3D2BD8007EDEA4 /* CoreDataManager.swift in Sources */,
 				421F04002A3CCE9C007EDEA4 /* LoginViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
