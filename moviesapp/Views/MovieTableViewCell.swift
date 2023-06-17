@@ -9,6 +9,11 @@ import UIKit
 
 class MovieTableViewCell: UITableViewCell {
     
+    weak var delegate: MovieTableViewCellDelegate?
+    
+    private var movieOne: Movie? = nil
+    private var movieTwo: Movie? = nil
+    
     @IBOutlet weak var lblTitleOne: UILabel!
     @IBOutlet weak var lblTitleTwo: UILabel!
     @IBOutlet weak var imgvOne: UIImageView!
@@ -21,14 +26,24 @@ class MovieTableViewCell: UITableViewCell {
     }
     
     func configure(movieOne: Movie, movieTwo: Movie? = nil) {
+        self.movieOne = movieOne
         lblTitleOne.text = movieOne.title
         loadImage(movie: movieOne, imageView: self.imgvOne)
         if let movieTwo = movieTwo {
             lblTitleTwo.text = movieTwo.title
             loadImage(movie: movieTwo, imageView: self.imgvTwo)
+            self.movieTwo = movieTwo
         } else {
             ViewRight.isHidden = true
         }
+        delegate?.didSelectMovie(movieOne)
+        
+        let tapGestureOne = UITapGestureRecognizer(target: self, action: #selector(imageOneTapped))
+        imgvOne.addGestureRecognizer(tapGestureOne)
+        imgvOne.isUserInteractionEnabled = true
+        let tapGestureTwo = UITapGestureRecognizer(target: self, action: #selector(imageTwoTapped))
+        imgvTwo.addGestureRecognizer(tapGestureTwo)
+        imgvTwo.isUserInteractionEnabled = true
     }
     
     func loadImage(movie: Movie, imageView :UIImageView) {
@@ -51,6 +66,15 @@ class MovieTableViewCell: UITableViewCell {
                     }
                 }
             }.resume()
+        }
+    }
+    
+    @objc func imageOneTapped() {
+        delegate?.didSelectMovie(self.movieOne!)
+    }
+    @objc func imageTwoTapped() {
+        if let movieTwo = self.movieTwo {
+            delegate?.didSelectMovie(movieTwo)
         }
     }
 }

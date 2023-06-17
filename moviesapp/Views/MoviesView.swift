@@ -6,7 +6,9 @@
 //
 
 import UIKit
-
+protocol MovieTableViewCellDelegate: AnyObject {
+    func didSelectMovie(_ movie: Movie)
+}
 class MoviesView: UIViewController {
     
     let cellIdentifier = "CustomMovieCell"
@@ -56,7 +58,7 @@ class MoviesView: UIViewController {
     }
 }
 
-extension MoviesView: UITableViewDelegate, UITableViewDataSource {
+extension MoviesView: UITableViewDelegate, UITableViewDataSource, MovieTableViewCellDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let totalItems = viewModel.movies.count
         return totalItems / 2
@@ -72,6 +74,7 @@ extension MoviesView: UITableViewDelegate, UITableViewDataSource {
         } else {
             cell.configure(movieOne: firstMovie)
         }
+        cell.delegate = self
         return cell
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -85,5 +88,10 @@ extension MoviesView: UITableViewDelegate, UITableViewDataSource {
         if offsetY > 0 && offsetY + scrollViewHeight >= contentHeight {
             self.loadMovies()
         }
+    }
+    func didSelectMovie(_ movie: Movie) {
+        let movieDetailViewController = MovieDetailViewController()
+        movieDetailViewController.movie = movie
+        navigationController?.pushViewController(movieDetailViewController, animated: true)
     }
 }

@@ -33,6 +33,8 @@
 		421F04172A3D2C9F007EDEA4 /* MovieResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 421F04162A3D2C9F007EDEA4 /* MovieResponse.swift */; };
 		421F041A2A3D6560007EDEA4 /* MovieTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 421F04182A3D6560007EDEA4 /* MovieTableViewCell.swift */; };
 		421F041B2A3D6560007EDEA4 /* MovieTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 421F04192A3D6560007EDEA4 /* MovieTableViewCell.xib */; };
+		421F041E2A3E3751007EDEA4 /* MovieDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 421F041C2A3E3751007EDEA4 /* MovieDetailViewController.swift */; };
+		421F041F2A3E3751007EDEA4 /* MovieDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 421F041D2A3E3751007EDEA4 /* MovieDetailViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -83,6 +85,8 @@
 		421F04162A3D2C9F007EDEA4 /* MovieResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieResponse.swift; sourceTree = "<group>"; };
 		421F04182A3D6560007EDEA4 /* MovieTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieTableViewCell.swift; sourceTree = "<group>"; };
 		421F04192A3D6560007EDEA4 /* MovieTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MovieTableViewCell.xib; sourceTree = "<group>"; };
+		421F041C2A3E3751007EDEA4 /* MovieDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailViewController.swift; sourceTree = "<group>"; };
+		421F041D2A3E3751007EDEA4 /* MovieDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MovieDetailViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -221,6 +225,8 @@
 				421F04022A3CCF0D007EDEA4 /* MoviesView.xib */,
 				421F04182A3D6560007EDEA4 /* MovieTableViewCell.swift */,
 				421F04192A3D6560007EDEA4 /* MovieTableViewCell.xib */,
+				421F041C2A3E3751007EDEA4 /* MovieDetailViewController.swift */,
+				421F041D2A3E3751007EDEA4 /* MovieDetailViewController.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -346,6 +352,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				421F041F2A3E3751007EDEA4 /* MovieDetailViewController.xib in Resources */,
 				421F03C92A3CC608007EDEA4 /* LaunchScreen.storyboard in Resources */,
 				421F041B2A3D6560007EDEA4 /* MovieTableViewCell.xib in Resources */,
 				421F04042A3CCF0D007EDEA4 /* MoviesView.xib in Resources */,
@@ -388,6 +395,7 @@
 				421F04132A3D2C41007EDEA4 /* APIError.swift in Sources */,
 				421F03ED2A3CC819007EDEA4 /* BaseNavigationController.swift in Sources */,
 				421F03BC2A3CC606007EDEA4 /* SceneDelegate.swift in Sources */,
+				421F041E2A3E3751007EDEA4 /* MovieDetailViewController.swift in Sources */,
 				421F040D2A3D2AEC007EDEA4 /* MovieEntity.swift in Sources */,
 				421F04172A3D2C9F007EDEA4 /* MovieResponse.swift in Sources */,
 				421F040A2A3D29A9007EDEA4 /* RemoteMoviesRepository.swift in Sources */,

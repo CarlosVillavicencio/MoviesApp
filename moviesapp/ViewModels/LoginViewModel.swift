@@ -9,10 +9,8 @@ import Foundation
 
 class LoginViewModel {
     func login(username: String, password: String, completion: @escaping (Bool) -> Void) {
-        let correctUsername = "admin"
-        let correctPassword = "admin"
-//        let correctUsername = "Admin"
-//        let correctPassword = "Password*123"
+        let correctUsername = "Admin"
+        let correctPassword = "Password*123"
         
         let isLoggedIn = (username == correctUsername) && (password == correctPassword)
         completion(isLoggedIn)
