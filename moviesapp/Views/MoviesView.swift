@@ -44,27 +44,10 @@ class MoviesView: UIViewController {
     }
     
     private func loadMovies() {
-        viewModel.searchMovies(query: "Action") { [weak self] error in
+        viewModel.searchMovies() { [weak self] error in
             if let error = error {
                 print("Error searching movies: \(error)")
             } else {
-                print("data recibida")
-                if let movies = self?.viewModel.movies {
-                    for movie in movies {
-                        print("movie")
-                        print(movie.title)
-                    }
-                    print("=========================")
-                    print("=========================")
-                    print("=========================")
-                    print("=========================")
-                    print("movies")
-                    print("viewModel.movies.count")
-                    print(self?.viewModel.movies.count)
-                    print(movies)
-                } else {
-                    print("movies no encontrada")
-                }
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.125) {
                     self?.tbMovies.reloadData()
                 }
@@ -100,7 +83,7 @@ extension MoviesView: UITableViewDelegate, UITableViewDataSource {
         let contentHeight = scrollView.contentSize.height
         let scrollViewHeight = scrollView.frame.size.height
         if offsetY > 0 && offsetY + scrollViewHeight >= contentHeight {
-            print("Se llegó al final del desplazamiento hacia abajo")
+            self.loadMovies()
         }
     }
 }

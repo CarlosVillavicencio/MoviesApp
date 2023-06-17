@@ -11,7 +11,7 @@ class RemoteMoviesRepository: MoviesRepository {
     private let apiKey = "f46b58478f489737ad5a4651a4b25079"
     
     func searchMovies(query: String, completion: @escaping SearchCompletion) {
-        let urlString = "https://api.themoviedb.org/3/movie/upcoming?page=1&api_key=\(apiKey)"
+        let urlString = "https://api.themoviedb.org/3/movie/upcoming?page=\(query)&api_key=\(apiKey)"
         guard let url = URL(string: urlString) else {
             completion(.failure(APIError.invalidURL))
             return

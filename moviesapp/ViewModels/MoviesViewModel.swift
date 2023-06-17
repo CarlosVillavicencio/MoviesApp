@@ -12,6 +12,8 @@ class MoviesViewModel {
     private let repository: MoviesRepository
     private let coreDataManager: CoreDataManager
     
+    private var page: Int = 0
+    private var noMoreMovies: Bool = false
     var movies: [Movie] = []
     
     init(repository: MoviesRepository, coreDataManager: CoreDataManager) {
@@ -19,11 +21,18 @@ class MoviesViewModel {
         self.coreDataManager = coreDataManager
     }
     
-    func searchMovies(query: String, completion: @escaping (Error?) -> Void) {
-        repository.searchMovies(query: query) { [weak self] result in
+    func searchMovies(completion: @escaping (Error?) -> Void) {
+        if noMoreMovies {
+            return
+        }
+        page += 1
+        repository.searchMovies(query: "\(page)") { [weak self] result in
             switch result {
             case .success(let movies):
-                self?.movies = movies
+                if movies.count == 0 {
+                    self?.noMoreMovies = true
+                }
+                self?.movies += movies
                 self?.coreDataManager.saveMovies(movies)
                 completion(nil)
             case .failure(let error):
